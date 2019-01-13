@@ -3,7 +3,7 @@
 var jwt = require('jwt-simple');
 var moment = require('moment');
 
-var secret = 'esta_es_mi_clave_secreta_de_mi_curso_de_red_social'; 
+var secret = 'put_a_secret_password_here'; 
 
 exports.ensureAuth = function(req, res, next){
 	if(!req.headers.authorization){
