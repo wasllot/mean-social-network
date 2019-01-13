@@ -7,7 +7,7 @@ var secret = 'esta_es_mi_clave_secreta_de_mi_curso_de_red_social';
 
 exports.ensureAuth = function(req, res, next){
 	if(!req.headers.authorization){
-		return res.status(403).send({message: 'La petición no tiene la cabecera de autenticación!!!'});
+		return res.status(403).send({message: 'Missing authentication header'});
 	}
 
 	
