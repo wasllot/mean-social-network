@@ -1,0 +1,79 @@
+
+		
+		<div class="loading" *ngIf="loading">
+			<img class="img-loading" src="../../assets/images/load3.gif" alt="Loading image" />
+		</div>
+		<div *ngIf="followed && !loading; then hay; else nohay"></div>
+		<ng-template #hay>
+			<div *ngFor="let follow of followed">
+				<div class="card col-md-12 my-1">
+					<div class="row text-center">
+						<div class="col-md-3 bio-image text-center">
+							<img height="100" width="100" src="{{ url + 'get-image-user/' + follow.user.image }}" *ngIf="follow.user.image" alt="Card image" />
+							<img height="100" width="100" src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!follow.user.image" alt="Card image" />
+						</div>
+
+						<div class="col-md-6 col-12 d-flex flex-column justify-content-center align-items-center">
+							<a [routerLink]="['/profile', follow.user._id]" class="card-link">
+								<h4 class="user-name">{{follow.user.name +' '+ follow.user.surname}}</h4>
+							</a>
+							<h6 class="user-nick">@{{follow.user.nick}}</h6>
+							<br>
+						</div>
+						<!-- SECCIÓN FOLLOWS -->
+						<div class="col-md-3 col-12 d-flex justify-content-center align-items-center">
+							<div class="follow-buttons" *ngIf=" follow.user._id != identity._id ">
+								<button class="btn btn-success btn-sm" *ngIf=" follows && follows.indexOf(follow.user._id) < 0"
+									(click)="followUser(follow.user._id)">
+									<i class="fa fa-user-plus text-white px-2 fa-2x"></i>
+									Follow
+								</button>
+								<button class="btn btn-danger btn-sm" *ngIf=" follows && follows.indexOf(follow.user._id) >= 0"
+									(click)="deleteFollowUser(follow.user._id)">
+									<i class="fa fa-user-times text-white px-2 fa-2x"></i>
+									Unfollow
+								</button>
+							</div>
+							<div class="follow-buttons" *ngIf="follow.user._id == identity._id">
+								<a class="btn btn-success btn-sm" [routerLink]="['/profile', identity._id]">
+									<i class="fa fa-user text-white px-2 fa-2x"></i>
+									My profile
+								</a>
+							</div>
+
+						</div>
+						<!-- FIN SECCIÓN FOLLOWS -->
+					</div>
+				</div>
+			</div>
+
+			<!-- PAGINACIÓN -->
+			<div class="col-lg-12">
+				<ul class="pagination center">
+					<li class="page-item" [ngClass]="{disabled : page <= 1 }">
+						<a class="page-link" [routerLink]="['/seguidores/', user_id, prev_page]">&laquo; Previous</a>
+					</li>
+					<li *ngFor="let pagina of paginas" class="page-item" [routerLinkActive]="['active']">
+						<a class="page-link" [routerLink]="['/seguidores/', user_id, pagina+1]">{{pagina+1}}</a>
+					</li>			
+					<li class="page-item" [ngClass]="{disabled : pages == page }">
+						<a class="page-link" [routerLink]="['/seguidores/', user_id, next_page]">Next &raquo;</a>
+					</li>
+				</ul>
+			</div>
+			<!-- FIN PAGINACIÓN -->
+		</ng-template>
+		<ng-template #nohay>
+			<div class="card bg-primary col-lg-12">
+				<div class="card-header"><h4 class="user-name text-yellow">There's no followers</h4></div>
+				<div class="card-body text-white">
+					<h5>It's look like this user hasn't been followed for anyone</h5>
+				</div>
+			</div>
+		</ng-template>
+	<!-- </div>
+
+	<div class="general-container col-lg-4">
+		<app-sidebar></app-sidebar>
+	</div>
+</div> -->

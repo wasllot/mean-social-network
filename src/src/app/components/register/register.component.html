@@ -1,0 +1,72 @@
+<div id="cover">
+
+
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center pt-md-5 h-100" style="background: rgba(0,0,0,0.25);">
+
+    <h1 class="h1-responsive text-center py-2 text-white wow fadeIn" data-wow-delay="0.6s">Welcome to Wasllot social network!</h1>
+      <div id="login" class="wow fadeIn mt-md-5" data-wow-delay="0.6s">
+        <div class="wow">
+    		<div class="alert alert-dismissible alert-success text-center" *ngIf="status == 'success'">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				Register completed successfully, <a [routerLink]="['/login']">Login here</a>
+			</div>
+			<div class="alert alert-dismissible alert-danger text-center" *ngIf="status == 'error'">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				Register couldn't be completed. <br>{{message}}
+			</div>
+           <!-- Default form register -->
+            <form class="text-center p-md-3 pt-2" #registerForm="ngForm" (ngSubmit)='onSubmit(registerForm)'>
+
+                <p class="h4 mb-4 text-white">Sign up</p>
+
+                <div class="form-row mb-4">
+                    <div class="col">
+                        <!-- First name -->
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Name" type="text" name="name" #name="ngModel" [(ngModel)]="user.name" required>
+                    	<span *ngIf="!name.valid && name.touched" class="text-danger">
+							Name is required
+						</span>
+                    </div>
+                    <div class="col">
+                        <!-- Last name -->
+                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required>
+                        <span *ngIf="!surname.valid && surname.touched" class="text-danger">
+							Surname is required
+						</span>
+                    </div>
+                    <div class="col">
+                        <!-- nick -->
+                        <input type="text" id="defaultRegisterFormNick" class="form-control" placeholder="Nick"  name="nick" #nick="ngModel" [(ngModel)]="user.nick" required>
+ 						<span *ngIf="!nick.valid && nick.touched" class="text-danger">
+							Nick is required
+						</span>                       
+                    </div>
+                </div>
+
+                <!-- E-mail -->
+                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+				<span *ngIf="!email.valid && email.touched" class="text-danger">
+					Email is required
+				</span>                
+
+                <!-- Password -->
+                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+				<span *ngIf="!password.valid && password.touched" class="text-danger">
+					Password is required
+				</span>
+
+                <input class="btn btn-success my-4 btn-block" type="submit" [disabled]="!registerForm.form.valid" value="Sign in">
+                <hr>
+                <a  [routerLink]="['/login']" class="link" id="login-button">Already a member? Log in</a>
+            </form>
+          <!-- Default form register -->
+        </div>
+      </div> 
+
+      <a [routerLink]="['/home']" class="text-white mt-5 wow fadeIn">
+        <i class="fa fa-chevron-left fa-2x" aria-hidden="true" > Home</i>
+      </a> 
+    </div>
+    
+  </div>
+

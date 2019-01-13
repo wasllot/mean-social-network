@@ -1,0 +1,81 @@
+
+<app-header class="d-md-none d-block"></app-header>
+
+	<div class="container">
+		<div class="loading"*ngIf="loading">
+			<img class="img-loading" src="../../assets/images/load3.gif" alt="Loading image" />
+		</div>
+
+		<!-- LISTADO -->
+		<div *ngIf="users && !loading; then hay; else nohay"></div>
+
+		<ng-template #hay>				
+
+			  <div class="container-fluid mean-fruit-gradient color-block text-white py-2">
+				  <h4 class="text-center">Users</h4>
+			  </div>
+
+			  <div *ngFor="let user of users">
+
+				<div class="mx-auto" *ngIf="user._id != identity._id">
+	               
+						<div class="box-part text-center">
+	                        <div class="bio-image text-center">
+								<img width="45" height="45" src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" alt="Card image" />
+								<img width="45" height="45" src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!user.image" alt="Card image" />
+							</div>
+	                       
+							<div class="title">
+								<a  class="text-muted" [routerLink]="['/profile', user._id]">
+									<h4>{{user.name +' '+ user.surname}}</h4>
+								</a>
+								<a class="text-muted" [routerLink]="['/profile', user._id]">
+									<p>@{{user.nick}}</p>
+								</a>
+							</div>
+	                      
+							<div class="follow-buttons" *ngIf=" user._id != identity._id ">
+									<button class="btn btn-success btn-sm" *ngIf=" follows.indexOf(user._id) < 0"
+									(click)="followUser(user._id)">
+									<i class="fa fa-user-plus text-white px-2 fa-2x"></i>
+									Follow
+								</button>
+								<button class="btn btn-danger btn-sm" *ngIf=" follows.indexOf(user._id) >= 0"
+									(click)="deleteFollowUser(user._id)">
+									<i class="fa fa-user-times text-white px-2 fa-2x"></i>
+									Unfollow
+								</button>
+							</div>
+	                        
+						 </div>
+					</div>	
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<ul class="pagination center">
+							<li class="page-item" [ngClass]="{disabled : page <= 1 }">
+								<a class="page-link" [routerLink]="['/people/', prev_page]">&laquo; Previous</a>
+							</li>
+							<li *ngFor="let pagina of paginas" class="page-item" [routerLinkActive]="['active']">
+								<a class="page-link" [routerLink]="['/people/', pagina+1]">{{pagina+1}}</a>
+							</li>			
+							<li class="page-item" [ngClass]="{disabled : pages == page }">
+								<a class="page-link" [routerLink]="['/people/', next_page]">Next &raquo;</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			
+		</ng-template>
+
+		<ng-template #nohay>
+			<div class="card mean-fruit-gradient color-block text-white py-2 my-2">
+				<h4 class="text-center text-white">There are no more people</h4>
+				<div class="card-body">
+					<h5>There are no more users in this platform</h5>
+				</div>
+			</div>
+		</ng-template>
+
+	</div>

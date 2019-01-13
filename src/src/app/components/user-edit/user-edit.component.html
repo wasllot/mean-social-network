@@ -1,0 +1,186 @@
+<app-header></app-header>
+
+<div class="container pt-4 mt-4">
+
+	<div class="py-4 text-center wow fadeIn">
+		<h1 class="h1-responsive">
+			Update your info
+		</h1>
+	</div>
+
+	<div class="alert alert-dismissible alert-success wow fadeIn" *ngIf="status == 'success'">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		Info updated successfully!
+	</div>
+	<div class="alert alert-dismissible alert-danger wow fadeIn" *ngIf="status == 'error'">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		The info couldn't be updated 
+
+	</div>
+
+<!-- 	<form #userEditForm="ngForm" (ngSubmit)='onSubmit()' class="p-5 md-form">
+		<div class="row">
+			<div class="form-left col-lg-6">
+				<p>
+					<label for="">Name</label>
+					<input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control mb-4" required />
+					<span *ngIf="!name.valid && name.touched" class="text-danger">
+						The name is required
+					</span>
+				</p>
+				<p>
+					<label>Surname</label>
+					<input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control mb-4" required />
+					<span *ngIf="!surname.valid && surname.touched" class="text-danger">
+						The surname is required
+					</span>
+				</p>
+
+				<p>
+					<label>Nick</label>
+					<input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control mb-4" required />
+					<span *ngIf="!nick.valid && nick.touched" class="text-danger">
+						The nick is required
+					</span>
+				</p>
+
+				<p>
+					<label>Email</label>
+					<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control mb-4" required />
+					<span *ngIf="!email.valid && email.touched" class="text-danger">
+						The email is required
+					</span>
+				</p>
+
+				<p>
+					<label>About you</label>
+					<textarea name="status" #text="ngModel" [(ngModel)]="user.status" class="form-control mb-4" ></textarea>
+				</p>
+			</div>
+
+			<div class="form-right col-lg-6">
+				<div class="form-right">          
+                    <div class="custom-file" style="cursor: pointer !important;">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="fileChangeEvent($event)">
+	                    <label for="customFile" >                        
+	                    	<div class="bio-image wow fadeIn" >
+	                    		<div class="view overlay zoom">
+	                      			 <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" alt="{{user.name}}" />
+	                           		 <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!user.image" alt="{{user.name}}" />
+
+								    <div class="mask flex-center">
+								        <p class="white-text">Upload image</p>
+								    </div>
+								</div>
+	     
+	                        </div> 
+	                    </label>
+                    </div>
+                </div>
+			</div>
+		</div>
+		
+		<br>
+		<div class="center">
+			<input type="submit" value="Actualizar" class="btn btn-primary" [disabled]="!userEditForm.form.valid" />
+		</div>
+	</form> -->
+
+	<!-- Extended material form grid -->
+<form #userEditForm="ngForm" (ngSubmit)='onSubmit()' class="wow fadeIn">
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="email" class="form-control" id="inputEmail4MD" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+        <label class="py-2" for="inputEmail4MD">Email</label>
+		<span *ngIf="!email.valid && email.touched" class="text-danger">
+			The email is required
+		</span>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control" id="inputNick4MD" name="nick" #nick="ngModel" [(ngModel)]="user.nick" required>
+        <label class="py-2" for="inputNick4MD">Nick</label>
+		<span *ngIf="!nick.valid && nick.touched" class="text-danger">
+			The nick is required
+		</span>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+  <!-- Grid row -->
+
+  <!-- Grid row -->
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control" id="inputNameMD" name="name" #name="ngModel" [(ngModel)]="user.name" required>
+        <label class="py-2" for="inputNameMD">Name</label>
+		<span *ngIf="!name.valid && name.touched" class="text-danger">
+			The name is required
+		</span>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <input type="text" class="form-control" id="inputSurname2MD" name="surname" #surname="ngModel" [(ngModel)]="user.surname" required >
+        <label class="py-2" for="inputSurname2MD">Surname</label>
+		<span *ngIf="!surname.valid && surname.touched" class="text-danger">
+			The surname is required
+		</span>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+	<div class="row">
+		<div class="col-md-6">
+
+		    <div class="md-form">
+		        <textarea type="text" id="status" name="status" rows="2" #text="ngModel" [(ngModel)]="user.status"class="form-control md-textarea"></textarea>
+		        <label class="py-2" for="status">About you</label>
+		    </div>
+
+		</div>
+		<div class="col-md-6">
+				<div class="form-right wow fadeIn">          
+                    <div class="custom-file" style="cursor: pointer !important;">
+                        <input type="file" class="custom-file-input" id="customFile" (change)="fileChangeEvent($event)">
+	                    <label for="customFile" >                        
+	                    	<div class="bio-image wow fadeIn" >
+	                    		<div class="view overlay zoom">
+	                      			 <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" alt="{{user.name}}" />
+	                           		 <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!user.image" alt="{{user.name}}" />
+
+								    <div class="mask flex-center">
+								        <p class="white-text">Upload image</p>
+								    </div>
+								</div>
+	     
+	                        </div> 
+	                    </label>
+                    </div>
+                </div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-center wow fadeIn">
+		<button type="submit" class="btn btn-primary btn-md" [disabled]="!userEditForm.form.valid">Update</button>
+	</div>
+  
+</form>
+<!-- Extended material form grid -->
+
+</div>

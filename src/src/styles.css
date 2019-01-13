@@ -1,0 +1,129 @@
+body {
+    background-color: #eeeeee;
+}
+
+
+
+.section-header h1{
+	font-size: 35px;
+	font-weight: bold;
+}
+
+
+
+.text-white{
+	color: white !important;
+}
+
+.center{
+	display: flex !important;
+	justify-content: center;
+}
+
+.derecha{
+	display: flex !important;
+	justify-content: flex-end;
+}
+
+.border-danger {
+	border: 2px solid #FC3939 !important;
+}
+
+.img-loading{
+	width: 35%;
+	display:block;
+	margin:auto;
+}
+
+/** fin GENERALES **/
+
+
+
+
+/** 
+*** HOME, LOGIN y REGISTER
+**/
+
+/** fin HOME, LOGIN y REGISTER **/
+
+body, html{
+	margin: 0;
+	height: 100%; 
+}
+
+#cover{
+	background-image: url('https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fbg-1.jpg?alt=media&token=c0efbe39-b219-4a4a-87e6-c8d2208985aa');
+	height: 100vh !important;
+	background-size: cover;
+	background-position: center;  
+}
+
+#login form{
+	background-color: rgba(0, 0, 0, 0.2) !important;
+	width: 500px;
+
+}
+
+#login form, form{
+	border: none !important; 
+	border-radius: 0px !important;
+}
+
+#login-button{
+	color: white;
+}
+
+#login-button:hover{
+	color: #EAE9E9;
+	transition: ease-out; 
+}
+#utilities{
+	padding-top: 3rem;
+}
+
+#utilities .jumbotron{
+	background-color: #781FE5; 
+	background-size: cover;
+	background-position: center; 
+	height: 100%; 
+    color: #fff;
+}
+
+
+#utilities .jumbotron, #utilities .jumbotron-fluid{
+	margin-top: 5rem;
+}
+
+.github{
+	background-color: #2C2B2B; 
+	color: white;
+}
+
+.github:hover{
+	color: #E8E8E8;
+}
+
+/*Search */
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.bio-image img{
+    border-radius:50%;
+}
+
+.navbar-nav li.active > a {
+	background-color: #333;
+	color: #fff;
+}
+
+.navbar li a img{
+	border: 1px solid #eee !important;
+}

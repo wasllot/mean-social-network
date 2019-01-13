@@ -1,0 +1,170 @@
+<app-header></app-header>
+
+<div class="container portfolio mt-4">
+    <div class="bio-info wow fadeIn" *ngIf="user">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="bio-image wow fadeIn">
+                    <img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" alt="{{user.name}}" />
+                    <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!user.image" alt="{{user.name}}" />
+                </div>          
+            </div>
+            <div class="col-md-6">
+                <div class="bio-content pt-sm-4">
+                    <h1 class="wow fadeIn text-center">Hi there, I'm {{user.name + ' ' + user.surname}}</h1>
+                    <div class="row wow fadeIn ml-auto" *ngIf=" user._id != identity._id">
+	            		<span class="badge badge-secondary" *ngIf="!followed">
+							<i class="fa fa-thumbs-down text-white px-2 fa-2x"></i>
+							Not following you
+						</span>
+						<span class="badge badge-primary" *ngIf="followed">
+							<i class="fa fa-thumbs-up text-white px-2 fa-2x"></i>
+							Following you
+						</span>
+					</div>
+                    <h6 class="wow fadeIn py-2">{{user.status}}</h6>
+                    <p class="lead wow fadeIn">@{{user.nick}}</p>
+                </div>
+                <div class="row wow fadeIn" *ngIf=" user._id != identity._id">
+						<div class="col-12 follow-buttons">
+							<button class="btn btn-success btn-sm" *ngIf="!following" (click)="followUser(user._id)">
+								<i class="fa fa-user-plus text-white px-2 fa-2x"></i>
+								Follow
+							</button>
+							<button class="btn btn-danger btn-sm" *ngIf="following" (click)="deleteFollowUser(user._id)">
+								<i class="fa fa-user-times text-white px-2 fa-2x"></i>
+								Unfollow
+							</button>
+						</div>
+					</div>
+            </div>
+        </div>  
+    </div>
+   <div class="card gedf-card h-100 wow fadeIn">
+        <div class="card-header bg-white">
+            <ul class="nav nav-tabs" id="myTab" role="tablist" *ngIf="stats">
+              <li class="nav-item px-2">
+                <a class="nav-link active" (click)="loadSecction('publications')" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Posts<sup class="px-1"><span class="badge badge-success">{{stats.publications}}</span></sup></a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" id="following-tab" (click)="loadSecction('followings')" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">Following<sup class="px-1"><span class="badge badge-success">{{stats.following}}</span></sup></a>
+              </li>
+              <li class="nav-item px-2">
+                <a class="nav-link" (click)="loadSecction('followeds')" id="followed-tab" data-toggle="tab" href="#followed" role="tab" aria-controls="followed" aria-selected="false">Followers<sup class="px-1"><span class="badge badge-warning">{{stats.followed}}</span></sup></a>
+              </li>
+            </ul>           
+        </div>   
+        <div class="card-body">
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+   				<app-sidebar class="wow fadeIn"></app-sidebar>
+   				<div *ngIf="user">
+   					<div *ngIf="section == 'publications'" class="wow fadeIn">
+						<app-publications [user_id]="user._id"></app-publications>
+					</div>
+   				</div>
+
+              </div>
+              <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+          		<div *ngIf="section == 'followings'" class="wow fadeIn">
+					<app-following [user_id]="user._id"></app-following>
+				</div>
+              </div>
+              <div class="tab-pane fade" id="followed" role="tabpanel" aria-labelledby="followed-tab">
+              	<div *ngIf="section == 'followeds'" class="wow fadeIn">
+					<app-followed [user_id]="user._id"></app-followed>
+				</div>
+              </div>
+            </div>   
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="row">
+	<div class="general-container col-lg-8 ">
+		<div class="section-header">
+			<h1>{{title}}</h1>
+		</div>
+
+		<div class="user-card col-lg-12" *ngIf="user">
+			<div class="row">
+				<div class="user-avatar col-lg-6">
+					<img src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user.image" alt="Card image" />
+					<img src="assets/images/usuario.png" *ngIf="!user.image" alt="Card image" />
+					<div class="row" *ngIf="stats">
+						<div class="col-lg-12">
+							<div class="stats col-lg-4">
+								<a (click)="loadSecction('followings')" style="cursor: pointer">
+									<span>Siguiendo</span> 
+									<span class="text-yellow">{{stats.following}}</span>
+								</a>
+							</div>
+							<div class="stats col-lg-4">
+								<a (click)="loadSecction('followeds')" style="cursor: pointer">
+									<span>Seguidores</span> 
+									<span class="text-yellow">{{stats.followed}}</span>
+								</a>
+							</div>
+							<div class="stats col-lg-4">
+								<a (click)="loadSecction('publications')" style="cursor: pointer">
+									<span>Publicaciones</span> 
+									<span class="text-yellow">{{stats.publications}}</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="user-data col-lg-6">
+					<h2>{{user.name + ' ' +user.surname}}</h2>
+					<h3><small class="user-nick">{{user.nick}}</small></h3>
+					<div class="row" *ngIf=" user._id != identity._id">
+						<div class="col-lg-6">
+							<span class="badge badge-secondary" *ngIf="!followed">
+								<span class="far fa-thumbs-down"></span>
+								no te sigue
+							</span>
+							<span class="badge badge-primary" *ngIf="followed">
+								<span class="far fa-thumbs-up"></span>
+								te sigue
+							</span>
+						</div>
+						<div class="col-lg-6 derecha follow-buttons">
+							<button class="btn btn-success btn-sm" *ngIf="!following" (click)="followUser(user._id)">
+								<span class="fas fa-plus-square"></span>
+								Seguir
+							</button>
+							<button class="btn btn-danger btn-sm" *ngIf="following" (click)="deleteFollowUser(user._id)">
+								<span class="fas fa-minus-square"></span>
+								Dejar de seguir
+							</button>
+						</div>
+					</div>
+					<br>
+					<div class="user-status">
+						<p class="lead"><em>{{user.status}}</em></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="secction-user" class="publications" *ngIf="user">
+			<div *ngIf="section == 'publications'">
+				<app-publications [user_id]="user._id"></app-publications>
+			</div>
+			<div *ngIf="section == 'followings'">
+				<app-following [user_id]="user._id"></app-following>
+			</div>
+			<div *ngIf="section == 'followeds'">
+				<app-followed [user_id]="user._id"></app-followed>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="general-container col-lg-4">
+		<app-sidebar
+			
+		></app-sidebar>
+	</div>
+</div> -->

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg  navbar-light bg-white">
+ <div class="container">
+ 	   <a [routerLink]="['/home']" class="navbar-brand">
+ 	   	<img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Flogo.png?alt=media&token=37c4fd3c-317f-4f70-a87e-f2bf7407d033" class="mx-1" width="30" height="30" alt="{{title}}">{{title}}</a>
+ 	
+ 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+ 	  aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+ 	  <span class="navbar-toggler-icon"></span>
+ 	</button>
+ 	<div class="collapse navbar-collapse" id="basicExampleNav">
+ 	  <ul class="navbar-nav mr-auto">
+ 	    <li class="nav-item" [routerLinkActive]="['active']">
+ 	      <a class="nav-link" [routerLink]="['/timeline']" ><i class="fa px-2 fa-bars text-primary"></i>Timeline</a>
+ 	    </li>
+ 	    <li class="nav-item" [routerLinkActive]="['active']">
+ 	      <a class="nav-link" [routerLink]="['/messages']" ><i class="fa px-2 fa-envelope text-success"></i>Messages</a>
+ 	    </li> 	    
+ 	    <li class="nav-item" [routerLinkActive]="['active']">
+ 	      <a class="nav-link" [routerLink]="['/profile', identity._id]" > <i class="fa px-2 fa-user text-secondary"></i>Profile</a>
+ 	    </li> 	    
+ 	    <li class="nav-item d-block d-md-none" [routerLinkActive]="['active']">
+ 	      <a class="nav-link" [routerLink]="['/people']" > <i class="fa px-2 fa-users text-warning"></i>Users</a>
+ 	    </li>
+ 	  </ul>
+ 	  <ul class="navbar-nav ml-auto nav-flex-icons">
+ 	  <li class="nav-item dropdown ml-auto">
+ 	    <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+ 	      <img src="{{ url + 'get-image-user/' + identity.image }}" *ngIf="identity && identity.image" class="rounded-circle" width="45" alt="{{identity.name}}">       
+ 	      <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!identity.image" class="rounded-circle" width="45" alt="{{identity.name}}">
+ 	    </a>
+ 	    <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
+ 	      <a class="dropdown-item waves-effect waves-light"  [routerLink]="['/profile', identity._id]">
+ 	      	<i class="fa px-2 fa-user-circle text-info"></i>Profile</a>
+ 	      <a class="dropdown-item waves-effect waves-light" [routerLink]="['/settings']"><i class="fa px-2 fa-pencil text-default"></i>My data</a>
+ 	      <a class="dropdown-item waves-effect waves-light" (click)="logout()"><i class="fa px-2 fa-sign-out text-primary"></i>Log out</a>
+ 	    </div>
+ 	  </li>
+ 	 </ul>
+ 	 <ul class="nav navbar-nav ml-auto" *ngIf='!identity'>
+ 			<li class="nav-item" [routerLinkActive]="['active']">
+ 				<a class="nav-link" [routerLink]="['/login']">
+ 					<i class="fa px-2 fa-sign-in text-primary"></i>
+ 					Login
+ 				</a>
+ 			</li>
+ 			<li class="nav-item" [routerLinkActive]="['active']">
+ 				<a class="nav-link" [routerLink]="['/register']">
+ 					<i class="fa px-2 fa-user-plus text-success"></i>
+ 					Register
+ 				</a>
+ 			</li>
+ 		</ul>
+ 	</div>
+ </div>
+  </nav>

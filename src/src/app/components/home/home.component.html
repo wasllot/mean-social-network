@@ -1,0 +1,255 @@
+  <div id="cover">
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center pt-md-5 h-100" style="background: rgba(0,0,0,0.25);">
+    	<h1 class=" text-center pt-2 text-white font-weight-bold wow fadeIn " data-wow-delay="0.6s">Welcome to Wasllot social network<span *ngIf="identity">, {{identity.name}}</span>!</h1>    	
+<!--     	<h1 class=" text-center pt-2 text-white wow fadeIn display-4" data-wow-delay="0.6s" *ngIf='identity'>Welcome to Wasllot  social network, {{identity.name}}!</h1> -->
+      <h4 class="text-center pt-2 text-white font-weight-bold wow fadeIn" *ngIf="identity">
+        Make friends and get fun with this social network! 
+      </h4>
+        <div class="py-4">
+            <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Flogo.png?alt=media&token=37c4fd3c-317f-4f70-a87e-f2bf7407d033" width="150" height="150" />
+        </div>
+    	<div class="flex-inline" *ngIf='!identity'>
+              <button class="btn btn-info" type="submit" [routerLink]="['/login']">Login</button>
+              <button class="btn btn-info" type="submit" [routerLink]="['/register']">Register</button>
+    	</div>
+
+   		<a [routerLink]="['/timeline']" class="link text-white mt-5" *ngIf="identity"><i class="fa px-2 fa-bars text-primary"></i>Go to timeline</a>
+
+    </div>   
+  </div>
+
+<section class="container-fluid pt-5">
+    <div class="container h-100 text-center">
+        <h2 class="h1-responsive pb-5 wow fadeIn" data-wow-delay="0.6s">About this project</h2>
+
+        <p class="text-justify pb-5 wow fadeIn" data-wow-delay="0.6s">
+          <span class="ml-4"></span>This social network was made in order to show you all about how to implement the stack MEAN technologies. These are nodejs, mongod, expressjs and angular. Because of these technologies we're able to develop amazing projects like this whitout having to hire such a big team of development. That's beucase the stack MEAN is based on javascript and is ease to understand and learn even to only one person in a team. Today, social networks  have taken a high value and became part of people's live. That's why Wasllot, it's glad to invite you out to join and be part of us.
+        </p>
+
+        <!-- Grid row -->
+        <div class="row wow fadeIn" data-wow-delay="0.6s">
+
+          <!-- Grid column -->
+          <div class="col-lg-4 col-md-6">
+
+            <!--Card Narrower-->
+            <div class="card card-cascade narrower">
+
+              <!--Card image-->
+              <div class="view view-cascade overlay">
+                <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2F01.png?alt=media&token=872a8281-4b0c-462b-9f92-1d3d81438697" class="card-img-top"
+                  alt="narrower">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-body card-body-cascade">
+                <h5 class="pink-text"><i class="fa fa-connectdevelop"></i> Angular</h5>
+                <!--Title-->
+                <h4 class="card-title">Client side</h4>
+                <!--Text-->
+                <p class="card-text">To make this proyect beautiful and give you a confortable user interface, Angular is here. This is a free and open source framework of design that allows us to work with html, css and javascript in an easy way. It has taken and special role in recent times, in part because of has been made and supported by google.</p>
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card Narrower-->
+
+          </div>
+          <div class="col-lg-4 col-md-6">
+
+            <!--Card Narrower-->
+            <div class="card card-cascade narrower">
+
+              <!--Card image-->
+              <div class="view view-cascade overlay">
+                <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2F02.jpg?alt=media&token=0e1ad94f-82b4-4cf4-a2a2-d511135ec4fc" class="card-img-top"
+                  alt="narrower">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-body card-body-cascade">
+                <h5 class="indigo-text"><i class="fa fa-bug"></i> Node.js && Express.js</h5>
+                <!--Title-->
+                <h4 class="card-title">Backend side</h4>
+                <!--Text-->
+                <p class="card-text">From backend side, it's nodejs, which is a JavaScript runtime built on Chrome's V8 JavaScript engine and allows us to make our website dynamic.In the other hand, express.js is a framework that make easy to use the nodejs languaje.  it's just a module framework for Node that you can use for applications that are based on server/s that will "listen" for any input/connection requests from clients.</p>
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card Narrower-->
+
+          </div>
+          <div class="col-lg-4 col-md-6">
+
+            <!--Card Narrower-->
+            <div class="card card-cascade narrower">
+
+              <!--Card image-->
+              <div class="view view-cascade overlay">
+                <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2F03.png?alt=media&token=4d6c3b00-eb1c-40e8-8cdd-b8447cd9c8e9" class="card-img-top"
+                  alt="narrower">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--/.Card image-->
+
+              <!--Card content-->
+              <div class="card-body card-body-cascade">
+                <h5 class="dark-text"><i class="fa fa-leaf"></i> MongoDB</h5>
+                <!--Title-->
+                <h4 class="card-title">Management and databases</h4>
+                <!--Text-->
+                <p class="card-text">
+            Mongodb is a no realational database and it's just like a big json object.</p>
+              </div>
+              <!--/.Card content-->
+
+            </div>
+            <!--/.Card Narrower-->
+
+          </div>
+
+        </div>
+        <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Features v.3 -->
+<section class="my-5 container">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive text-center my-5 wow fadeIn" data-wow-delay="0.6s">You have got to join us!</h2>
+  <!-- Section description -->
+  <p class="lead grey-text text-center w-responsive mx-auto mb-5 wow fadeIn" data-wow-delay="0.6s">This project is a twitter based project. However, as this one progressed and developed, many utlities were taken out, but... come on! just join us and realized about what wasllot is able to do.</p>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-lg-5 text-center text-lg-left wow fadeIn" data-wow-delay="0.6s">
+      <img class="img-fluid rounded-circle" src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2F05.jpeg?alt=media&token=91d3955d-3d5e-428a-807e-71407a010a92" alt="Sample image">
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-7">
+
+      <!-- Grid row -->
+      <div class="row mb-3 wow fadeIn" data-wow-delay="0.6s">
+
+        <!-- Grid column -->
+        <div class="col-1">
+          <i class="fa fa-mail-forward fa-lg indigo-text"></i>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Use</h5>
+          <p class="grey-text">This social network is easy to use. You only have to sign up and then login to and lastly start making friends and sharing about you with everybody. Also, you can edit your info, send messages and more.</p>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+      <!-- Grid row -->
+      <div class="row mb-3 wow fadeIn" data-wow-delay="0.6s">
+
+        <!-- Grid column -->
+        <div class="col-1">
+          <i class="fa fa-mail-forward fa-lg indigo-text"></i>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Technology</h5>
+          <p class="grey-text">It's been developed with the most demanded and useful technologies nowadays. Here's another reason to join us.</p>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn" data-wow-delay="0.6s">
+
+        <!-- Grid column -->
+        <div class="col-1">
+          <i class="fa fa-mail-forward fa-lg indigo-text"></i>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-xl-10 col-md-11 col-10">
+          <h5 class="font-weight-bold mb-3">Safety</h5>
+          <p class="grey-text mb-0">It's quite safe, because of the data encryption system. Nobody could get your password!</p>
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+  <section id="utilities" class="wow fadeIn" data-wow-delay="0.6s">
+      <div class="jumbotron jumbotron-fluid text-center">
+          <div class="container ">
+            <h2 class="display-4 wow fadeIn" data-wow-delay="0.6s">Hey!</h2>
+            <p class="wow fadeIn" data-wow-delay="0.6s">Come on, it's another social network! I'm sure you know all about it.</p>
+          </div>
+        </div>
+        <div class="container pt-5">
+          <div class="row">
+            <div class="col-md-4 my-auto wow fadeIn" data-wow-delay="0.6s">
+              <div class="view overlay zoom pr-2">
+                <img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2F06.jpeg?alt=media&token=6e337513-da4e-43de-a862-3aad9f451318" class="img-fluid" alt="zoom">
+                <div class="mask flex-center waves-effect waves-light">
+                  <a  [routerLink]="['/registe']" class="link white-text">Join us</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h3 class="text-center wow fadeIn" data-wow-delay="0.6s">Things you should now...</h3>
+              <p class="text-justify wow fadeIn px-2" data-wow-delay="0.6s">This project has been developed as a way of learning and showing the Wasllot's skills. Although it is a social network based on Twitter, it still needs a lot of work to become like this. However, we won't give up, so we'll continue working every day to get better and make it better and more friendly in order to one day it become a social network even better than Twitter. We hope you're there to see it. </p>
+            </div>
+            <div class="col-md-12">
+              <p class="text-justify wow fadeIn py-2" data-wow-delay="0.6s">
+                Thank you for visiting our project and then, here's our github repository to allow to download our project and make it better as you like. Greetings!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="text-center wow fadeIn" data-wow-delay="0.6s">
+            <a href="#" class="btn github"><i class="fa fa-github prefix"></i> Github repository</a>
+          </div>
+        </div>
+  </section>
+
+  <footer class="container-fluid pt-5 wow fadeIn" data-wow-delay="0.6s">
+    <div class="text-center align-middle">
+      <small class="p-2">&copy; 2019 Wasllot</small>
+    </div>
+  </footer>
+
+
+
+
+
+

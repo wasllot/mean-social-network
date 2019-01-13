@@ -1,0 +1,67 @@
+<div class="section-header messages-header mt-4">
+	<div class="messages-header-text">
+		<h1>{{title}}</h1>
+	</div>
+	<div class="derecha messages-header-button">
+		<button class="btn btn-success" (click)="refreshMessages($event)">
+			<span class="fas fa-sync-alt"></span>
+			Update
+		</button>
+	</div>
+</div>
+<div class="loading" *ngIf="loading">
+	<img class="img-loading" src="../../assets/images/load3.gif" alt="Loading image" />
+</div>
+
+<div *ngIf="messages && !loading; then hay; else nohay"></div>
+
+<ng-template #hay>
+	<div *ngFor="let message of messages">
+		<div class="card mean-fruit-gradient color-block text-white py-2 mt-2 mb-4">
+				<div class="col-lg-12">
+					<div class="message-avatar">
+						<img src="{{ url + 'get-image-user/' + message.emitter.image }}" *ngIf="message.emitter.image" alt="Card image" />
+						<img src="https://firebasestorage.googleapis.com/v0/b/recipeapp-a620e.appspot.com/o/mean-socialnetwork%2Fdescarga.png?alt=media&token=7678834b-5536-4f26-bdd5-49c5861f9ab2" *ngIf="!message.emitter.image" alt="Card image" />
+					</div>
+					<div class="message-user">
+						<a [routerLink]="['/profile', message.emitter._id]">
+							<h3 class="text-muted">{{message.emitter.name + ' ' +message.emitter.surname}}</h3>
+						</a>
+						<small><i class="fa fa-clock-o"></i> {{ (message.created_at | amFromUnix) | amLocale: 'en' | amTimeAgo }}</small>
+					</div>
+				</div>
+
+
+			<div class="col-lg-12" >
+				<div class="card-body" >
+					<h5 class="text-white">{{message.text}}</h5>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- PAGINACIÓN -->
+	<div class="col-lg-12" *ngIf="pages>1">
+		<ul class="pagination center">
+			<li class="page-item" [ngClass]="{disabled : page <= 1 }">
+				<a class="page-link" [routerLink]="['/messages/inbox/', prev_page]">&laquo; Previous</a>
+			</li>
+			<li *ngFor="let pagina of paginas" class="page-item" [routerLinkActive]="['active']">
+				<a class="page-link " [routerLink]="['/messages/inbox/', pagina+1]">{{pagina+1}}</a>
+			</li>			
+			<li class="page-item" [ngClass]="{disabled : pages == page }">
+				<a class="page-link" [routerLink]="['/messages/inbox/', next_page]">Next &raquo;</a>
+			</li>
+		</ul>
+	</div>
+	<!-- FIN PAGINACIÓN -->
+</ng-template>
+
+<ng-template #nohay>
+	<div class="card card mean-fruit-gradient color-block text-white py-2 my-2">
+		<h4 class="text-white text-center">There's no messages</h4>
+		<div class="card-body">
+			<h5>You haven't got any message</h5>
+		</div>
+	</div>
+</ng-template>
