@@ -9,7 +9,7 @@ stack MEAN is based on javascript and is ease to understand and learn even to on
 Today, social networks  have taken a high value and became part of people's live. That's why Wasllot, it's
 glad to invite you out to join and be part of us.
 
-Angular 7
+Angular 6
 
 o make this proyect beautiful and give you a confortable user interface, Angular is here. 
 This is a free and open source framework of design that allows us to work with html, 
