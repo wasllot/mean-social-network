@@ -1,5 +1,5 @@
 # mean-social-network
-A social network devloped with thee MEAN stack 
+A social network devloped with the MEAN stack 
 
 This social network was made in order to show you all about how to implement the stack MEAN technologies.
 These are nodejs, mongod, expressjs and angular. Because of these technologies we're able to develop
@@ -21,7 +21,7 @@ Nodejs
 From backend side, it's nodejs, which is a JavaScript runtime built on Chrome's V8 JavaScript
 engine and allows us to make our website dynamic.
 
-expressjs
+Expressjs
 
  It's a framework that make easy to use the nodejs languaje.  it's just a module framework for
  Node that you can use for applications that are based on server/s that will "listen" for any
